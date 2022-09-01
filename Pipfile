@@ -1,0 +1,14 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+cyberpi = "*"
+
+[dev-packages]
+pylint = "==2.12.2"
+pyserial = "*"
+
+[requires]
+python_version = "3.9.9"
