@@ -18,4 +18,4 @@ lint:
 
 # Prettify README.md
 prettify-readme:
-	npx prettier README.md --write
+	npx prettier README.md **/*/README.md --write
