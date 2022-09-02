@@ -156,7 +156,7 @@ def read_weather():
     speak_text = "香港現在天氣：" + str(weather) + "，" + \
                  "氣溫：" + str(temperature_min) + "至"  + str(temperature_max) + "℃，" + \
                  "濕度：" + str(humidity) + "%，" + \
-                 "空氣質素：" + str(air_quality) + "，" + \
+                 "空氣質素：" + str(air_quality) + "（ " + get_health_concern_level(air_quality) + "），" + \
                  "日出時間：" + str(sunrise_time) + "，" + \
                  "日落時間：" + str(sunset_time)
     cyberpi.cloud.tts("zh", speak_text)
@@ -171,9 +171,9 @@ def display_page1():
     cyberpi.table.add(2, 1, "溫度")
     cyberpi.table.add(2, 2, str(temperature_min) + "℃" + "-" + str(temperature_max) + "℃")
     cyberpi.table.add(3, 1, "濕度")
-    cyberpi.table.add(3, 2, humidity)
+    cyberpi.table.add(3, 2, str(humidity) + "%")
     cyberpi.table.add(4, 1, "空氣質素")
-    cyberpi.table.add(4, 2, air_quality)
+    cyberpi.table.add(4, 2, str(air_quality) + "（ " + get_health_concern_level(air_quality) + "）")
 
 def display_page2():
     global current_page, sunrise_time, sunset_time
@@ -188,3 +188,17 @@ def display_page2():
     cyberpi.table.add(3, 2, "")
     cyberpi.table.add(4, 1, "")
     cyberpi.table.add(4, 2, "")
+
+def get_health_concern_level(air_quality):
+    if air_quality <= 50:
+        return "良好"
+    if air_quality >= 51 and air_quality <= 100:
+        return "普通"
+    if air_quality >= 101 and air_quality <= 150:
+        return "對敏感族群不良"
+    if air_quality >= 151 and air_quality <= 200:
+        return "對所有族群不良"
+    if air_quality >= 200 and air_quality <= 300:
+        return "非常不良"
+    if air_quality >= 301:
+        return "有害"
