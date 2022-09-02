@@ -15,3 +15,7 @@ install:
 # Run pylint checking
 lint:
 	pipenv run pylint $$(find . -type f -name "*.py")
+
+# Prettify README.md
+prettify-readme:
+	npx prettier README.md --write
