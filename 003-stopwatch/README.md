@@ -1,6 +1,6 @@
 # Stopwatch
 
-A simple stopwatch program written in microPython that allows pause and resume of timer.
+A simple stopwatch program written in MicroPython that allows pause and resume of timer.
 
 Please note that the stopwatch results are not guaranteed to be accurate and there might be some unnoticeable delays.
 

@@ -5,6 +5,7 @@ A simple stopwatch program written in microPython that allows pause and resume o
 import event, time, cyberpi
 
 WELCOME_MESSAGE = "Stopwatch\n\n△: Start\n○: Pause\n□: Reset"
+LED_EFFECT_STEPS = 4
 
 is_timer_started = False
 previous_time = 0
@@ -56,6 +57,7 @@ def is_button_b_press():
         is_timer_started = True
         cyberpi.timer.reset()
 
+        cyberpi.led.set_bri(get_led_brightness(int(previous_time % 60)))
         cyberpi.led.show("red orange yellow green cyan")
 
         while True:
@@ -69,4 +71,11 @@ def is_button_b_press():
             cyberpi.display.show_label(formatted_time, 24, "center")
 
             time.sleep(0.3)
+            cyberpi.led.set_bri(get_led_brightness(seconds))
             cyberpi.led.move(1)
+
+def get_led_brightness(seconds):
+    if seconds % LED_EFFECT_STEPS <= (LED_EFFECT_STEPS / 2):
+        return (seconds % LED_EFFECT_STEPS + 1) * 10
+    else:
+       return ((LED_EFFECT_STEPS / 2) - ((seconds % LED_EFFECT_STEPS) - (LED_EFFECT_STEPS / 2)) + 1) * 10
