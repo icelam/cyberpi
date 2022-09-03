@@ -43,7 +43,7 @@ def is_button_middle_press():
     if is_timer_started:
         cyberpi.stop_other()
         is_timer_started = False
-        previous_time = cyberpi.timer.get()
+        previous_time += cyberpi.timer.get()
         cyberpi.led.off(0)
 
 """
