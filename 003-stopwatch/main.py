@@ -26,12 +26,11 @@ Reset stopwatch
 def is_button_a_press():
     global is_timer_started, previous_time
 
-    if is_timer_started:
-        cyberpi.stop_other()
-        is_timer_started = False
-        cyberpi.led.off(0)
-        previous_time = 0
-        cyberpi.display.show_label(WELCOME_MESSAGE, 16, "center")
+    cyberpi.stop_other()
+    is_timer_started = False
+    cyberpi.led.off(0)
+    previous_time = 0
+    cyberpi.display.show_label(WELCOME_MESSAGE, 16, "center")
 
 """
 Pause stopwatch
