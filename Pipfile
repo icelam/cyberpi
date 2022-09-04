@@ -5,6 +5,7 @@ name = "pypi"
 
 [packages]
 cyberpi = "*"
+pillow = "*"
 
 [dev-packages]
 pylint = "==2.12.2"
