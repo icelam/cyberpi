@@ -1,4 +1,4 @@
-# Gradienter
+# Spirit Level
 
 A spirit level program written in MicroPython.
 
